@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea Moderna</title>
+    <link rel="icon" type="image/png" href="logos/libreriajoda.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #2d3a4b;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            padding: 2rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .productos, .carrito {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 2rem;
+            min-width: 320px;
+            max-width: 400px;
+        }
+        .productos {
+            flex: 1 1 0%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: none;
+            min-width: 0;
+        }
+        #lista-productos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .producto {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 220px;
+            background: #f9fafc;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 0;
+            border: 1px solid #e3e7ef;
+            padding: 1.2rem 1rem 1rem 1rem;
+            transition: box-shadow 0.2s;
+        }
+        .producto:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .producto img {
+            width: 120px;
+            height: 120px;
+            margin: 0 0 1rem 0;
+        }
+        .producto-info {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .producto-nombre {
+            font-size: 1.25rem;
+            color: #1a2230;
+            font-weight: bold;
+        }
+        .producto-precio {
+            font-size: 1.15rem;
+            color: #207a4b;
+            font-weight: bold;
+        }
+        .producto-desc {
+            font-size: 1.05rem;
+            color: #444;
+        }
+        .producto-boton {
+            width: 100%;
+            background: #2d3a4b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .producto-boton:hover {
+            background: #1a2230;
+        }
+        .carrito-lista {
+            list-style: none;
+            padding: 0;
+        }
+        .carrito-lista li {
+            margin-bottom: 0.7rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carrito-vacio {
+            color: #888;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .enviar-btn {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background 0.2s;
+        }
+        .enviar-btn:hover {
+            background: #128c7e;
+        }
+        .vaciar-btn {
+            width: 100%;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .vaciar-btn:hover {
+            background: #c0392b;
+        }
+        .mensaje-exito {
+            background: #d4f8e8;
+            color: #207a4b;
+            border-radius: 6px;
+            padding: 0.7rem 1rem;
+            margin: 1rem 0 0.5rem 0;
+            text-align: center;
+            display: none;
+            font-size: 1rem;
+        }
+        footer {
+            background: #2d3a4b;
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0 0.7rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+        .cliente-campo {
+            width: 100%;
+            margin-bottom: 0.7rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #e3e7ef;
+            font-size: 1rem;
+        }
+        .bienvenida {
+            background: #e3e7ef;
+            color: #2d3a4b;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem auto 2rem auto;
+            max-width: 700px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        /* Solo para referencia visual, el favicon real va en <head> */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .carrito {
+                margin-left: 0;
+                max-width: 100%;
+                min-width: 0;
+                position: static;
+            }
+        }
+        /* Añadir estilo para error en select de color */
+        .producto-color-error {
+            border: 2px solid #e74c3c !important;
+            background: #fff0f0;
+        }
+        .producto-color {
+            font-size: 1.05rem;
+            color: #2d3a4b;
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #e3e7ef;
+            padding: 0.2rem 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logos/libreriajoda.png" alt="Logo Librería JOda" style="height:60px;margin-bottom:0.5rem;">
+        <h1 style="margin:0;">Librería Joda</h1>
+        <div style="font-size:1.1rem;color:#e3e7ef;">Tienda en Línea Moderna</div>
+    </header>
+    <div class="bienvenida">
+        ¡Bienvenido a Librería Joda! Selecciona tus productos, agrégalos al carrito y envía tu pedido fácilmente por WhatsApp.<br>
+        Si tienes dudas, contáctanos al <b>7946-8807</b>.
+    </div>
+    <div class="container">
+        <section class="productos">
+            <h2>Productos</h2>
+            <div id="lista-productos"></div>
+        </section>
+        <aside class="carrito">
+            <h2>Carrito</h2>
+            <div class="mensaje-exito" id="mensaje-exito">¡Pedido enviado con éxito!</div>
+            <ul class="carrito-lista" id="carrito-lista"></ul>
+            <div class="carrito-vacio" id="carrito-vacio">El carrito está vacío.</div>
+            <input class="cliente-campo" id="nombre-cliente" type="text" placeholder="Tu nombre (opcional)">
+            <input class="cliente-campo" id="direccion-cliente" type="text" placeholder="Dirección o referencia (opcional)">
+            <div style="font-weight:bold;margin:1rem 0 0.5rem 0;">Total: <span id="carrito-total">$0.00</span></div>
+            <button class="enviar-btn" id="enviar-pedido">Enviar pedido por WhatsApp</button>
+            <button class="vaciar-btn" id="vaciar-carrito">Vaciar carrito</button>
+        </aside>
+    </div>
+    <script>
+        // Productos de ejemplo (puedes editar los nombres y descripciones)
+        const productos = [
+            {
+                nombre: 'Folder de Colores',
+                descripcion: 'Folder de cartulina disponible en varios colores, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder de Colores.jpg',
+                precio: 0.25,
+                colores: ['Amarillo', 'Rojo', 'Naranja', 'Verde Claro', 'Azul', 'Café', 'Celeste', 'Morado', 'Normal']
+            },
+            {
+                nombre: 'Lapiceros de Colores',
+                descripcion: 'Paquete de lapiceros de varios colores.',
+                imagen: 'image/lapiceros.jpg',
+                precio: 0.25,
+                colores: ['Azul', 'Negro', 'Rojo', 'Verde']
+            },
+            {
+                nombre: 'Pega 60ml',
+                descripcion: 'Pegamento líquido de 60ml, fuerte y duradero.',
+                imagen: 'image/Pega 60ml.jpg',
+                precio: 0.75
+            },
+            {
+                nombre: 'Lapiceros Bic',
+                descripcion: 'Lapicero Bic de alta calidad, ideal para escritura suave.',
+                imagen: 'image/Lapiceros Bic.jpg',
+                precio: 0.25,
+                colores: ['Azul', 'Negro', 'Rojo']
+            },
+            {
+                nombre: 'Silicon Líquido 100ml',
+                descripcion: 'Silicón líquido de 100ml, perfecto para manualidades y reparaciones.',
+                imagen: 'image/Silicon Líquido 100ml.jpg',
+                precio: 1.50
+            },
+            {
+                nombre: 'Lápiz Facela',
+                descripcion: 'Lápiz Facela de alta calidad, ideal para escribir y dibujar.',
+                imagen: 'image/Lapiz Facela.jpeg',
+                precio: 0.20
+            },
+            {
+                nombre: 'Pegamento en Barra 36gr',
+                descripcion: 'Pegamento en barra de 36 gramos, ideal para trabajos escolares y de oficina.',
+                imagen: 'image/Pegamento en Barra  36gr.jpg',
+                precio: 1.25
+            },
+            {
+                nombre: 'Cartulina',
+                descripcion: 'Cartulina disponible en varios colores, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina.jpg',
+                precio: 0.30,
+                colores: ['Amarilla', 'Verde Pastel', 'Rosada', 'Celeste', 'Blanca', 'Roja', 'Naranja', 'Verde', 'Negra', 'Azul']
+            },
+            {
+                nombre: 'Pliego de Papel Bond',
+                descripcion: 'Pliego de papel bond tamaño estándar, ideal para impresiones y manualidades.',
+                imagen: 'image/pliego de papel bond.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Página de Colores',
+                descripcion: 'Página de papel disponible en varios colores, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas de colores.jpg',
+                precio: 0.05,
+                colores: ['Verde', 'Roja', 'Amarilla', 'Negra', 'Azul']
+            },
+            {
+                nombre: 'Marcadores',
+                descripcion: 'Set de marcadores de colores surtidos, ideales para subrayar y resaltar textos.',
+                imagen: 'image/marcadores.jpeg',
+                precio: 0.75,
+                colores: ['Morado', 'Amarillo', 'Verde', 'Naranja', 'Fucsia', 'Celeste']
+            },
+            {
+                nombre: 'Papel Lustre',
+                descripcion: 'Papel lustre disponible en varios colores, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre.jpeg',
+                precio: 0.25,
+                colores: ['Surtido', 'Café', 'Naranja', 'Morado', 'Rosado']
+            },
+            {
+                nombre: 'Papel Crespón',
+                descripcion: 'Papel crepón disponible en varios colores, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon.jpg',
+                precio: 0.25,
+                colores: ['Azul', 'Verde', 'Café', 'Rojo', 'Blanco']
+            },
+            {
+                nombre: 'Foamy con Brillo',
+                descripcion: 'Foamy con brillo disponible en varios colores, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo.jpeg',
+                precio: 0.25,
+                colores: ['Amarillo', 'Azul', 'Rojo', 'Verde', 'Naranja']
+            },
+            {
+                nombre: 'Foamy sin Brillo',
+                descripcion: 'Foamy sin brillo disponible en varios colores, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo.jpg',
+                precio: 0.15,
+                colores: ['Rojo', 'Azul', 'Café', 'Verde']
+            },
+            {
+                nombre: 'Sacapuntas Metálicas',
+                descripcion: 'Sacapuntas metálicas resistentes, ideales para lápices escolares y de oficina.',
+                imagen: 'image/Sacapunta_Met_lica_Facela_24_u.jpg',
+                precio: 0.35
+            }
+        ];
+
+        const listaProductos = document.getElementById('lista-productos');
+        const carritoLista = document.getElementById('carrito-lista');
+        const carritoVacio = document.getElementById('carrito-vacio');
+        const enviarPedidoBtn = document.getElementById('enviar-pedido');
+        const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+        let carrito = [];
+
+        function renderProductos() {
+            listaProductos.innerHTML = '';
+            productos.forEach((producto, idx) => {
+                const div = document.createElement('div');
+                div.className = 'producto';
+                let colorSelect = '';
+                if (producto.colores) {
+                    colorSelect = `<select class="producto-color" id="color-select-${idx}">
+                        <option value="">Elige color</option>
+                        ${producto.colores.map(c => `<option value="${c}">${c}</option>`).join('')}
+                    </select>`;
+                }
+                // Eliminar visualización de stock
+                let cantidadInput = `<input type='number' min='1' max='99' value='1' class='producto-cantidad' id='cantidad-input-${idx}' style='width:60px;margin-bottom:0.5rem;'>`;
+                div.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="producto-info">
+                        <div class="producto-nombre">${producto.nombre}</div>
+                        <div class="producto-precio">$${producto.precio.toFixed(2)}</div>
+                        ${cantidadInput}
+                        <div class="producto-desc">${producto.descripcion}</div>
+                        ${colorSelect}
+                    </div>
+                    <button class="producto-boton" onclick="agregarAlCarrito(${idx})">Agregar</button>
+                `;
+                if (producto.stock === 0) {
+                    div.querySelector('.producto-boton').disabled = true;
+                    div.querySelector('.producto-boton').textContent = 'Agotado';
+                }
+                listaProductos.appendChild(div);
+            });
+        }
+
+        window.agregarAlCarrito = function(idx) {
+            const prod = productos[idx];
+            let color = '';
+            if (prod.colores) {
+                const select = document.getElementById(`color-select-${idx}`);
+                color = select ? select.value : '';
+                if (!color) {
+                    select.classList.add('producto-color-error');
+                    select.focus();
+                    return;
+                } else {
+                    select.classList.remove('producto-color-error');
+                }
+            }
+            // Obtener cantidad
+            const cantidadInput = document.getElementById(`cantidad-input-${idx}`);
+            let cantidad = 1;
+            if (cantidadInput) {
+                cantidad = parseInt(cantidadInput.value) || 1;
+                if (cantidad < 1) cantidad = 1;
+            }
+            // Ya no se verifica stock
+            const existe = carrito.find(p => p.nombre === prod.nombre && (!prod.colores || p.color === color));
+            if (existe) {
+                existe.cantidad += cantidad;
+            } else {
+                carrito.push({ ...prod, cantidad, color });
+            }
+            renderCarrito();
+        }
+
+        function renderCarrito() {
+            carritoLista.innerHTML = '';
+            let total = 0;
+            if (carrito.length === 0) {
+                carritoVacio.style.display = 'block';
+                enviarPedidoBtn.disabled = true;
+            } else {
+                carritoVacio.style.display = 'none';
+                enviarPedidoBtn.disabled = false;
+                carrito.forEach((item, idx) => {
+                    total += item.precio * item.cantidad;
+                    let colorText = item.color ? ` <span style='color:#207a4b;font-size:0.95em;'>(Color: ${item.color})</span>` : '';
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        ${item.nombre} (x${item.cantidad})${colorText} - $${(item.precio * item.cantidad).toFixed(2)}
+                        <button onclick="quitarDelCarrito(${idx})" style="background:#eee;color:#333;border:none;border-radius:3px;padding:2px 8px;cursor:pointer;">-</button>
+                    `;
+                    carritoLista.appendChild(li);
+                });
+            }
+            document.getElementById('carrito-total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        window.quitarDelCarrito = function(idx) {
+            if (carrito[idx].cantidad > 1) {
+                carrito[idx].cantidad -= 1;
+            } else {
+                carrito.splice(idx, 1);
+            }
+            renderCarrito();
+        }
+
+        vaciarCarritoBtn.addEventListener('click', () => {
+            carrito = [];
+            renderCarrito();
+        });
+
+        enviarPedidoBtn.addEventListener('click', () => {
+            if (carrito.length === 0) return;
+            let mensaje = '¡Hola! Quiero hacer un pedido:%0A';
+            const nombre = document.getElementById('nombre-cliente').value.trim();
+            const direccion = document.getElementById('direccion-cliente').value.trim();
+            if (nombre) mensaje += `Nombre: ${encodeURIComponent(nombre)}%0A`;
+            if (direccion) mensaje += `Dirección: ${encodeURIComponent(direccion)}%0A`;
+            carrito.forEach(item => {
+                let colorMsg = item.color ? ` (Color: ${encodeURIComponent(item.color)})` : '';
+                mensaje += `- ${encodeURIComponent(item.nombre)}${colorMsg} (x${item.cantidad}) - $${(item.precio * item.cantidad).toFixed(2)}%0A`;
+            });
+            mensaje += `Total: $${carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0).toFixed(2)}`;
+            const numero = '50379468807';
+            const url = `https://wa.me/${numero}?text=${mensaje}`;
+            window.open(url, '_blank');
+            mostrarMensajeExito();
+        });
+
+        function mostrarMensajeExito() {
+            const msg = document.getElementById('mensaje-exito');
+            msg.style.display = 'block';
+            setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        }
+
+        renderProductos();
+        renderCarrito();
+    </script>
+    <footer>
+        Librería Joda &copy; 2025 &bull; WhatsApp: 7946-8807 &bull; Síguenos en Facebook e Instagram
+    </footer>
+</body>
+</html>
