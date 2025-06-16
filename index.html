@@ -241,37 +241,91 @@
         // Productos de ejemplo (puedes editar los nombres y descripciones)
         const productos = [
             {
-                nombre: 'Folder de Colores',
-                descripcion: 'Folder de cartulina disponible en varios colores, ideal para organizar documentos escolares y de oficina.',
-                imagen: 'image/folder de colores.jpg',
-                precio: 0.25,
-                colores: ['Amarillo', 'Rojo', 'Naranja', 'Verde Claro', 'Azul', 'Café', 'Celeste', 'Morado', 'Normal']
+                nombre: 'Folder Amarillo',
+                descripcion: 'Folder de cartulina color Amarillo, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder amarillo.jpg',
+                precio: 0.25
             },
             {
-                nombre: 'Lapiceros de Colores',
-                descripcion: 'Paquete de lapiceros de varios colores.',
+                nombre: 'Folder Rojo',
+                descripcion: 'Folder de cartulina color Rojo, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder rojo.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Naranja',
+                descripcion: 'Folder de cartulina color Naranja, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder anaranjado.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Verde Claro',
+                descripcion: 'Folder de cartulina color Verde Claro, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder verde claro.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Azul',
+                descripcion: 'Folder de cartulina color Azul, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder azul.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Café',
+                descripcion: 'Folder de cartulina color Café, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder cafe.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Celeste',
+                descripcion: 'Folder de cartulina color Celeste, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder celeste.png',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Morado',
+                descripcion: 'Folder de cartulina color Morado, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder morado.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Folder Normal',
+                descripcion: 'Folder de cartulina color Normal, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder normal.jpg',
+                precio: 0.25
+            },
+            // Lapiceros de Colores
+            {
+                nombre: 'Lapicero de colores',
+                descripcion: 'Lapicero color Azul, ideal para escritura suave.',
                 imagen: 'image/lapiceros.jpg',
-                precio: 0.25,
-                colores: ['Azul', 'Negro', 'Rojo', 'Verde']
+                precio: 0.25
+            },
+    
+            // Lapiceros Bic
+            {
+                nombre: 'Lapicero Bic Azul',
+                descripcion: 'Lapicero Bic color Azul, ideal para escritura suave.',
+                imagen: 'image/lapicero bic Azul.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Lapicero Bic Negro',
+                descripcion: 'Lapicero Bic color Negro, ideal para escritura suave.',
+                imagen: 'image/lapicero Bic negro.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Lapicero Bic Rojo',
+                descripcion: 'Lapicero Bic color Rojo, ideal para escritura suave.',
+                imagen: 'image/lapicero Bic rojo.jpg',
+                precio: 0.25
             },
             {
                 nombre: 'Pega 60ml',
                 descripcion: 'Pegamento líquido de 60ml, fuerte y duradero.',
                 imagen: 'image/Pega 60ml.jpg',
                 precio: 0.75
-            },
-            {
-                nombre: 'Lapiceros Bic',
-                descripcion: 'Lapicero Bic de alta calidad, ideal para escritura suave.',
-                imagen: 'image/Lapiceros Bic.jpg',
-                precio: 0.25,
-                colores: ['Azul', 'Negro', 'Rojo']
-            },
-            {
-                nombre: 'Silicon Líquido 100ml',
-                descripcion: 'Silicón líquido de 100ml, perfecto para manualidades y reparaciones.',
-                imagen: 'image/Silicon Líquido 100ml.jpg',
-                precio: 1.50
             },
             {
                 nombre: 'Lápiz Facela',
@@ -285,25 +339,82 @@
                 imagen: 'image/Pegamento en Barra  36gr.jpg',
                 precio: 1.25
             },
+            // Cartulina Amarilla
             {
-                nombre: 'Cartulina',
-                descripcion: 'Cartulina disponible en varios colores, ideal para manualidades y presentaciones.',
-                imagen: 'image/Cartulina.jpg',
-                precio: 0.30,
-                colores: ['Amarilla', 'Verde Pastel', 'Rosada', 'Celeste', 'Blanca', 'Roja', 'Naranja', 'Verde', 'Negra', 'Azul']
+                nombre: 'Cartulina Amarilla',
+                descripcion: 'Cartulina color Amarilla, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina amarilla.jpg',
+                precio: 0.30
+            },
+            // Cartulina Verde Pastel
+            {
+                nombre: 'Cartulina Verde Pastel',
+                descripcion: 'Cartulina color Verde Pastel, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina verde.jpg',
+                precio: 0.30
+            },
+            // Cartulina Rosada
+            {
+                nombre: 'Cartulina Rosada',
+                descripcion: 'Cartulina color Rosada, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina rosada.jpg',
+                precio: 0.30
+            },
+            // Cartulina Celeste
+            {
+                nombre: 'Cartulina Celeste',
+                descripcion: 'Cartulina color Celeste, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina celeste.jpg',
+                precio: 0.30
+            },
+            // Cartulina Blanca
+            {
+                nombre: 'Cartulina Blanca',
+                descripcion: 'Cartulina color Blanca, ideal para manualidades y presentaciones.',
+                imagen: 'image/cartulina blanca.jpg',
+                precio: 0.30
             },
             {
                 nombre: 'Pliego de Papel Bond',
                 descripcion: 'Pliego de papel bond tamaño estándar, ideal para impresiones y manualidades.',
-                imagen: 'image/Pliego de Papel Bond.jpg',
+                imagen: 'image/pliego de papel bond.jpg',
                 precio: 0.25
             },
             {
-                nombre: 'Página de Colores',
-                descripcion: 'Página de papel disponible en varios colores, ideal para manualidades y presentaciones.',
-                imagen: 'image/paginas de colores.jpg',
-                precio: 0.05,
-                colores: ['Verde', 'Roja', 'Amarilla', 'Negra', 'Azul']
+                nombre: 'Página de Color Verde',
+                descripcion: 'Página de papel color Verde, ideal para manualidades y presentaciones.',
+                imagen: 'image/pagina verde.jpg',
+                precio: 0.05
+            },
+            {
+                nombre: 'Folder Verde Oscuro',
+                descripcion: 'Folder de cartulina color Verde Oscuro, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder verde oscuro.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Página de Color Roja',
+                descripcion: 'Página de papel color Roja, ideal para manualidades y presentaciones.',
+                imagen: 'image/pagina roja.jpg',
+                precio: 0.05
+            },
+            {
+                nombre: 'Página de Color Amarilla',
+                descripcion: 'Página de papel color Amarilla, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas amarilla.jpg',
+                precio: 0.05
+            },
+            {
+                nombre: 'Página de Color Negra',
+                descripcion: 'Página de papel color Negra, ideal para manualidades y presentaciones.',
+                imagen: 'image/pagina negra.jpg',
+                precio: 0.05
+            },
+            {
+                nombre: 'Página de Color Azul',
+                descripcion: 'Página de papel color Azul, ideal para manualidades y presentaciones.',
+                imagen: 'image/pagina azul.jpg',
+                precio: 0.05
             },
             {
                 nombre: 'Marcadores',
@@ -313,39 +424,138 @@
                 colores: ['Morado', 'Amarillo', 'Verde', 'Naranja', 'Fucsia', 'Celeste']
             },
             {
-                nombre: 'Papel Lustre',
-                descripcion: 'Papel lustre disponible en varios colores, ideal para manualidades y decoraciones escolares.',
-                imagen: 'image/papel lustre.jpeg',
-                precio: 0.25,
-                colores: ['Surtido', 'Café', 'Naranja', 'Morado', 'Rosado']
+                nombre: 'Papel Lustre Verde Claro',
+                descripcion: 'Papel lustre color verde claro, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre verde claro.jpg',
+                precio: 0.25
+            },
+                        {
+                nombre: 'Papel Lustre Verde Oscuro',
+                descripcion: 'Papel lustre color verde claro, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre verde oscuro.jpg',
+                precio: 0.25
             },
             {
-                nombre: 'Papel Crespón',
-                descripcion: 'Papel crepón disponible en varios colores, ideal para manualidades y decoraciones.',
-                imagen: 'image/Papel Crespon.jpg',
-                precio: 0.25,
-                colores: ['Azul', 'Verde', 'Café', 'Rojo', 'Blanco']
+                nombre: 'Papel Lustre Café',
+                descripcion: 'Papel lustre color café, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre cafe.jpg',
+                precio: 0.25
             },
             {
-                nombre: 'Foamy con Brillo',
-                descripcion: 'Foamy con brillo disponible en varios colores, ideal para manualidades y decoraciones.',
-                imagen: 'image/Foamy con Brillo.jpeg',
-                precio: 0.25,
-                colores: ['Amarillo', 'Azul', 'Rojo', 'Verde', 'Naranja']
+                nombre: 'Papel Lustre Anaranjado',
+                descripcion: 'Papel lustre color anaranjado, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre anaranjado.jpg',
+                precio: 0.25
             },
             {
-                nombre: 'Foamy sin Brillo',
-                descripcion: 'Foamy sin brillo disponible en varios colores, ideal para manualidades y decoraciones.',
-                imagen: 'image/Foamy sin Brillo.jpg',
-                precio: 0.15,
-                colores: ['Rojo', 'Azul', 'Café', 'Verde']
+                nombre: 'Papel Lustre Morado',
+                descripcion: 'Papel lustre color morado, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre morado.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Lustre Rosado',
+                descripcion: 'Papel lustre color rosado, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre rosado.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Lustre Celeste',
+                descripcion: 'Papel lustre color celeste, ideal para manualidades y decoraciones escolares.',
+                imagen: 'image/papel lustre celeste.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Azul',
+                descripcion: 'Papel crepón color azul, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon azul.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Verde',
+                descripcion: 'Papel crepón color verde, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon verde.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Café',
+                descripcion: 'Papel crepón color café, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon cafe.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Rojo',
+                descripcion: 'Papel crepón color rojo, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon rojo.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Blanco',
+                descripcion: 'Papel crepón color blanco, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon blanco.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Amarillo',
+                descripcion: 'Foamy con brillo color amarillo, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo amarillo.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Azul',
+                descripcion: 'Foamy con brillo color azul, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo azul.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Rojo',
+                descripcion: 'Foamy con brillo color rojo, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo rojo.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Verde',
+                descripcion: 'Foamy con brillo color verde, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo verde.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Anaranjado',
+                descripcion: 'Foamy con brillo color anaranjado, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy con brillo anaranjado.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy sin Brillo Rojo',
+                descripcion: 'Foamy sin brillo color rojo, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo rojo.jpg',
+                precio: 0.15
+            },
+            {
+                nombre: 'Foamy sin Brillo Azul',
+                descripcion: 'Foamy sin brillo color azul, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo azul.jpg',
+                precio: 0.15
+            },
+            {
+                nombre: 'Foamy sin Brillo Café',
+                descripcion: 'Foamy sin brillo color café, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo cafe.jpg',
+                precio: 0.15
+            },
+            {
+                nombre: 'Foamy sin Brillo Verde',
+                descripcion: 'Foamy sin brillo color verde, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo verde.jpg',
+                precio: 0.15
             },
             {
                 nombre: 'Sacapuntas Metálicas',
                 descripcion: 'Sacapuntas metálicas resistentes, ideales para lápices escolares y de oficina.',
                 imagen: 'image/Sacapunta_Met_lica_Facela_24_u.jpg',
                 precio: 0.35
-            }
+            },
+
         ];
 
         const listaProductos = document.getElementById('lista-productos');
