@@ -276,6 +276,12 @@
                 imagen: 'image/folder cafe.jpg',
                 precio: 0.25
             },
+                        {
+                nombre: 'Folder rosado',
+                descripcion: 'Folder de cartulina color rosado, ideal para organizar documentos escolares y de oficina.',
+                imagen: 'image/folder rosado.jpg',
+                precio: 0.25
+            },
             {
                 nombre: 'Folder Celeste',
                 descripcion: 'Folder de cartulina color Celeste, ideal para organizar documentos escolares y de oficina.',
@@ -398,10 +404,28 @@
                 imagen: 'image/pagina roja.jpg',
                 precio: 0.05
             },
+                        {
+                nombre: 'Página de Color Rosada',
+                descripcion: 'Página de papel color Rosada, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas rosadas.jpg',
+                precio: 0.05
+            },
             {
                 nombre: 'Página de Color Amarilla',
                 descripcion: 'Página de papel color Amarilla, ideal para manualidades y presentaciones.',
                 imagen: 'image/paginas amarilla.jpg',
+                precio: 0.05
+            },
+            {
+                nombre: 'Página de Color Morada',
+                descripcion: 'Página de papel color Morada, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas moradas.jpg',
+                precio: 0.05
+            },
+                        {
+                nombre: 'Página de Color Cafe',
+                descripcion: 'Página de papel color Café, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas cafe.jpg',
                 precio: 0.05
             },
             {
@@ -410,10 +434,16 @@
                 imagen: 'image/pagina negra.jpg',
                 precio: 0.05
             },
+                        {
+                nombre: 'Página de Color Celeste',
+                descripcion: 'Página de papel color Celeste, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas celeste.jpg',
+                precio: 0.05
+            },
             {
-                nombre: 'Página de Color Azul',
-                descripcion: 'Página de papel color Azul, ideal para manualidades y presentaciones.',
-                imagen: 'image/pagina azul.jpg',
+                nombre: 'Página de Color Anaranjado',
+                descripcion: 'Página de papel color Anaranjado, ideal para manualidades y presentaciones.',
+                imagen: 'image/paginas anaranjadas.jpg',
                 precio: 0.05
             },
             {
@@ -526,6 +556,24 @@
                 precio: 0.25
             },
             {
+                nombre: 'Papel Crespón Amarillo',
+                descripcion: 'Papel crespón color amarillo, ideal para manualidades y decoraciones.',
+                imagen: 'image/papel crespon amarillo.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Foamy con Brillo Café',
+                descripcion: 'Foamy con brillo color café, ideal para manualidades y decoraciones.',
+                imagen: 'image/Foamy con brillo cafe.jpg',
+                precio: 0.25
+            },
+            {
+                nombre: 'Papel Crespón Rosado',
+                descripcion: 'Papel crespón color rosado, ideal para manualidades y decoraciones.',
+                imagen: 'image/pepel crespon rosado.jpg',
+                precio: 0.25
+            },
+            {
                 nombre: 'Foamy sin Brillo Rojo',
                 descripcion: 'Foamy sin brillo color rojo, ideal para manualidades y decoraciones.',
                 imagen: 'image/foamy sin brillo rojo.jpg',
@@ -550,12 +598,29 @@
                 precio: 0.15
             },
             {
-                nombre: 'Sacapuntas Metálicas',
-                descripcion: 'Sacapuntas metálicas resistentes, ideales para lápices escolares y de oficina.',
-                imagen: 'image/Sacapunta_Met_lica_Facela_24_u.jpg',
-                precio: 0.35
+                nombre: 'Foamy sin Brillo Amarillo',
+                descripcion: 'Foamy sin brillo color amarillo, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo amarillo.jpg',
+                precio: 0.15
             },
-
+            {
+                nombre: 'Foamy sin Brillo Anaranjado',
+                descripcion: 'Foamy sin brillo color anaranjado, ideal para manualidades y decoraciones.',
+                imagen: 'image/foamy sin brillo anaranjado.jpg',
+                precio: 0.15
+            },
+            {
+                nombre: 'Plumones',
+                descripcion: 'Set de plumones de colores surtidos, ideales para escribir, dibujar y colorear.',
+                imagen: 'image/Plumones.jpg',
+                precio: 1.50
+            },
+            {
+                nombre: 'Colores Pequeños',
+                descripcion: 'Caja de colores pequeños, ideales para dibujar y colorear en la escuela o el hogar.',
+                imagen: 'image/colores pequeños.jpg',
+                precio: 1.25
+            }
         ];
 
         const listaProductos = document.getElementById('lista-productos');
@@ -564,6 +629,9 @@
         const enviarPedidoBtn = document.getElementById('enviar-pedido');
         const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
         let carrito = [];
+
+        // Ordenar productos alfabéticamente por nombre
+        productos.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
 
         function renderProductos() {
             listaProductos.innerHTML = '';
